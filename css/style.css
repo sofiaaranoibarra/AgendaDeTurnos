@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px;
+    background: #4caf50;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #3e8e41;
+}
+
+.contenedor-turnos {
+    margin-top: 20px;
+}
+
+.turno {
+    display: flex;
+    justify-content: space-between;
+    background: #e8e8e8;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.borrar {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.mensaje {
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+}

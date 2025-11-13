@@ -1,91 +1,92 @@
-// Agenda de turnos
+let turnos = JSON.parse(localStorage.getItem("turnos")) || [];
 
-const turnos = []
-
-function agregarTurno(nombre, dia) {
-    if (!nombre || !dia) {
-        alert("Operación cancelada o datos inválidos.")
-        return false
-    }
-
-    const turnoExistente = turnos.find(function(turno) {
-        return turno.nombre === nombre && turno.dia === dia
-    })
-
-    if (turnoExistente) {
-        alert("Ese turno ya está reservado.")
-        return false
-    }
-
-    turnos.push({ nombre: nombre, dia: dia })
-    alert("Turno agendado correctamente para " + nombre + " el día " + dia + ".")
-    return true
-}
+const form = document.getElementById("turnoForm");
+const listaTurnos = document.getElementById("listaTurnos");
+const mensaje = document.getElementById("mensaje");
 
 function mostrarTurnos() {
+    listaTurnos.innerHTML = "";
+
     if (turnos.length === 0) {
-        alert("No hay turnos agendados.")
-    } else {
-        let lista = "Turnos agendados:\n"
-        for (let i = 0; i < turnos.length; i++) {
-            lista += (i + 1) + ". " + turnos[i].nombre + " - " + turnos[i].dia + "\n"
-        }
-        alert(lista)
+        listaTurnos.innerHTML = "<p>No hay turnos agendados.</p>";
+        return;
     }
+
+    turnos.forEach(turno => {
+        const div = document.createElement("div");
+        div.className = "turno";
+
+        div.innerHTML = `
+            <span>${turno.nombre} — ${turno.dia} — ${turno.hora} hs</span>
+            <button class="borrar" data-id="${turno.id}">X</button>
+        `;
+
+        listaTurnos.appendChild(div);
+    });
 }
 
-function cancelarTurno(nombre) {
-    const indice = turnos.findIndex(function(turno) {
-        return turno.nombre === nombre
-    })
+function agregarTurno(nombre, dia, hora) {
 
-    if (indice === -1) {
-        alert("No se encontró un turno con ese nombre.")
-        return false
+    mensaje.textContent = "";
+
+    const ocupado = turnos.some(t => t.dia === dia && t.hora === hora);
+
+    if (ocupado) {
+        mensaje.textContent = "Ese turno ya está ocupado.";
+        return;
     }
 
-    const confirmado = confirm("¿Desea cancelar el turno de " + turnos[indice].nombre + "?")
-    if (confirmado) {
-        turnos.splice(indice, 1)
-        alert("Turno cancelado correctamente.")
-        return true
-    } else {
-        alert("Operación cancelada.")
-        return false
-    }
+    const nuevoTurno = {
+        id: Date.now(),
+        nombre,
+        dia,
+        hora
+    };
+
+    turnos.push(nuevoTurno);
+
+    localStorage.setItem("turnos", JSON.stringify(turnos));
+
+    mostrarTurnos();
+    form.reset();
 }
 
-let opcion = ""
+function borrarTurno(id) {
+    turnos = turnos.filter(t => t.id !== Number(id));
 
-while (opcion !== "4") {
-    opcion = prompt(
-        "AGENDA DE TURNOS\n\n1. Agendar turno\n2. Ver turnos\n3. Cancelar turno\n4. Salir\n\nIngrese el número de la opción:"
-    )
-
-    switch (opcion) {
-        case "1":
-            const nombre = prompt("Ingrese el nombre del paciente:")
-            const dia = prompt("Ingrese el día del turno:")
-            agregarTurno(nombre, dia)
-            break
-
-        case "2":
-            mostrarTurnos()
-            break
-
-        case "3":
-            const nombreCancelar = prompt("Ingrese el nombre del paciente a cancelar:")
-            cancelarTurno(nombreCancelar)
-            break
-
-        case "4":
-            alert("Saliendo del programa. ¡Hasta luego!")
-            break
-
-        default:
-            alert("Opción no válida. Intente nuevamente.")
-            break
-    }
+    localStorage.setItem("turnos", JSON.stringify(turnos));
+    mostrarTurnos();
 }
 
-console.log("Programa finalizado.")
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const dia = document.getElementById("dia").value.trim();
+    const hora = document.getElementById("hora").value.trim();
+
+    if (!nombre || !dia || !hora) {
+        mensaje.textContent = "Complete todos los campos.";
+        return;
+    }
+
+    // Validar formato de hora 24 hs (00:00 a 23:59)
+    const formatoHora = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+    if (!formatoHora.test(hora)) {
+        mensaje.textContent = "Hora inválida. Ejemplo correcto: 14:30";
+        return;
+    }
+
+    agregarTurno(nombre, dia, hora);
+});
+
+listaTurnos.addEventListener("click", function (e) {
+    if (e.target.classList.contains("borrar")) {
+        const id = e.target.dataset.id;
+        borrarTurno(id);
+    }
+});
+
+mostrarTurnos();
+

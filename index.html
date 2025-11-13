@@ -2,13 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Turnos</title>
+
+    <!-- HOJA CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- JS -->
-    <script defer src="./js/main.js"></script>
-    <title>Document</title>
+    <script defer src="js/main.js"></script>
 </head>
+
 <body>
-    <h1>Sofia Arano Ibarra</h1>
+
+    <h1>Consultorio de Ecografías – Agenda de Turnos</h1>
+
+    <form id="turnoForm">
+        <label>Nombre del paciente:</label>
+        <input type="text" id="nombre" required>
+
+        <label>Fecha del turno (DD/MM/AAAA):</label>
+        <input type="text" id="dia" placeholder="15/11/2025" required>
+
+        <label>Hora (formato 24 hs):</label>
+        <input type="text" id="hora" placeholder="14:30" required>
+
+        <button type="submit">Agendar Turno</button>
+    </form>
+
+    <div id="mensaje" class="mensaje"></div>
+
+    <h2>Turnos Agendados</h2>
+    <div id="listaTurnos" class="contenedor-turnos"></div>
+
 </body>
 </html>
