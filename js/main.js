@@ -70,7 +70,6 @@ form.addEventListener("submit", function (e) {
         return;
     }
 
-    // Validar formato de hora 24 hs (00:00 a 23:59)
     const formatoHora = /^([01]\d|2[0-3]):[0-5]\d$/;
 
     if (!formatoHora.test(hora)) {
@@ -89,4 +88,3 @@ listaTurnos.addEventListener("click", function (e) {
 });
 
 mostrarTurnos();
-
