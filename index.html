@@ -1,37 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Agenda de Turnos</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Consultorio De Ecografías</title>
 
-    <!-- HOJA CSS -->
-    <link rel="stylesheet" href="css/style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 
-    <!-- JS -->
-    <script defer src="js/main.js"></script>
+  <!-- SweetAlert2 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Vanilla Calendar FREE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-calendar@2.7.0/build/vanilla-calendar.min.css" />
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-calendar@2.7.0/build/vanilla-calendar.min.js"></script>
+
+  <!-- JS -->
+  <script defer src="./js/servicesLoader.js"></script>
+  <script defer src="./js/turnosUtils.js"></script>
+  <script defer src="./js/turnosDom.js"></script>
+  <script defer src="./js/turnosCrud.js"></script>
+
 </head>
 
 <body>
+  <header class="site-header">
+    <img src="assets/images/logo color.png" alt="Logo" class="logo" width="64" height="97">
+    <h1>Turnos - Consultorio de Ecografías</h1>
+  </header>
 
-    <h1>Consultorio de Ecografías – Agenda de Turnos</h1>
+  <main class="container">
+    <section class="panel panel-left">
+      <h2>Reservar Turno</h2>
 
-    <form id="turnoForm">
-        <label>Nombre del paciente:</label>
-        <input type="text" id="nombre" required>
+      <form id="formTurno" novalidate>
+        <div class="field">
+          <label for="nombre">Apellido y Nombre</label>
+          <input id="nombre" name="nombre" type="text" inputmode="text" required />
+          <small class="error" data-for="nombre"></small>
+        </div>
 
-        <label>Fecha del turno (DD/MM/AAAA):</label>
-        <input type="text" id="dia" placeholder="15/11/2025" required>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+          <small class="error" data-for="email"></small>
+        </div>
 
-        <label>Hora (formato 24 hs):</label>
-        <input type="text" id="hora" placeholder="14:30" required>
+        <div class="field">
+          <label for="telefono">WhatsApp</label>
+          <input id="telefono" name="telefono" type="tel" inputmode="tel" required />
+          <small class="error" data-for="telefono"></small>
+        </div>
 
-        <button type="submit">Agendar Turno</button>
-    </form>
+        <div class="field">
+          <label for="categoria">Categoría</label>
+          <select id="categoria" required>
+            <option value="">-- Selecciona Categoría --</option>
+          </select>
+        </div>
 
-    <div id="mensaje" class="mensaje"></div>
+        <div class="field">
+          <label for="servicio">Ecografia</label>
+          <select id="servicio" required>
+            <option value="">-- Selecciona Ecografia --</option>
+          </select>
+        </div>
 
-    <h2>Turnos Agendados</h2>
-    <div id="listaTurnos" class="contenedor-turnos"></div>
+        <div class="field">
+          <label for="fecha">Fecha</label>
+          <div id="vanilla-calendar"></div>
+          <input id="fecha" name="fecha" type="date" required />
+          <small class="hint">Días habilitados: Lun, Mar, Jue (15:30–19:00) y Sáb (10:00–19:00)</small>
+          <small class="error" data-for="fecha"></small>
+        </div>
 
+        <div class="field">
+          <label for="hora">Hora</label>
+          <select id="hora" required>
+            <option value="">-- Selecciona Horario --</option>
+          </select>
+          <small class="error" data-for="hora"></small>
+        </div>
+
+        <div class="actions">
+          <button id="btnReservar" type="submit" class="btn primary">Reservar</button>
+          <button id="btnLimpiar" type="button" class="btn">Limpiar Formulario</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel panel-right">
+      <h2>Turnos Agendados</h2>
+      <div id="listaTurnos">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© Sofia Arano Ibarra - 2025</p>
+  </footer>
 </body>
+
 </html>

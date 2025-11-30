@@ -1,0 +1,44 @@
+[
+  {
+    "categoria": "Doppler Generales",
+    "servicios": [
+      { "nombre": "Doppler Arterial", "duracion": 15 },
+      { "nombre": "Doppler Venoso", "duracion": 15 },
+      { "nombre": "Doppler Esplenoportal (Abdominal)", "duracion": 15 },
+      { "nombre": "Doppler Renal", "duracion": 15 },
+      { "nombre": "Doppler de Vasos de Cuello", "duracion": 15 },
+      { "nombre": "Doppler de Tiroides", "duracion": 15 },
+      { "nombre": "Doppler Ginecológico o Transvaginal", "duracion": 15 },
+      { "nombre": "Doppler Mamario", "duracion": 15 },
+      { "nombre": "Doppler Transfontanelar", "duracion": 15 },
+      { "nombre": "Doppler Testicular", "duracion": 15 }
+    ]
+  },
+  {
+    "categoria": "Ecografías Generales",
+    "servicios": [
+      { "nombre": "Ecografía Abdominal", "duracion": 15 },
+      { "nombre": "Ecografía Renal", "duracion": 15 },
+      { "nombre": "Ecografía Vesical", "duracion": 15 },
+      { "nombre": "Ecografía Prostática", "duracion": 15 },
+      { "nombre": "Ecografía Mamaria", "duracion": 15 },
+      { "nombre": "Ecografía Ginecológica o Transvaginal", "duracion": 15 },
+      { "nombre": "Ecografía de Partes Blandas", "duracion": 15 },
+      { "nombre": "Ecografía Testicular", "duracion": 15 },
+      { "nombre": "Ecografía de Tiroides", "duracion": 15 },
+      { "nombre": "Ecografía de Caderas", "duracion": 15 },
+      { "nombre": "Ecografía Cerebral", "duracion": 15 }
+    ]
+  },
+  {
+    "categoria": "Ecografías Embarazo",
+    "servicios": [
+      { "nombre": "Ecografía Ginecológica o Transvaginal", "duracion": 15 },
+      { "nombre": "Ecografía Obstétrica", "duracion": 15 },
+      { "nombre": "Ecografía Translucencia Nucal / Screening 11–14", "duracion": 15 },
+      { "nombre": "Ecografía Scan Fetal", "duracion": 15 },
+      { "nombre": "Ecografía Doppler Obstétrico / Fetal", "duracion": 15 },
+      { "nombre": "Ecografía Doppler Placentario", "duracion": 15 }
+    ]
+  }
+]
