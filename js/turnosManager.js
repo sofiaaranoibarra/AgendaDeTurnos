@@ -1,5 +1,3 @@
-// ---------- turneroCrud.js ----------
-
 const App = (function () {
   const LS_KEY = 'turnos_v1';
   const DIAS_HABILITADOS = new Set([1, 2, 4, 6]);
@@ -107,7 +105,7 @@ const App = (function () {
     });
   };
 
-  // ---------- CRUD ----------
+  // ---------- GESTION DE TURNOS ----------
   const renderTurnos = () => {
     listaTurnos.innerHTML = '';
     if (!turnos.length) {
@@ -240,7 +238,7 @@ const App = (function () {
       valido = false;
     } else {
       const fechaHoy = new Date();
-      fechaHoy.setHours(0, 0, 0, 0); // solo comparar la fecha, no hora
+      fechaHoy.setHours(0, 0, 0, 0);
       const fechaTurno = new Date(`${fecha}T00:00:00`);
 
       if (fechaTurno < fechaHoy) {
@@ -285,8 +283,6 @@ const App = (function () {
     form.reset();
     horaSelect.innerHTML = '<option value="">-- Selecciona Horario --</option>';
   });
-
-
 
   // ---------- INICIALIZACIÓN ----------
   const init = () => {

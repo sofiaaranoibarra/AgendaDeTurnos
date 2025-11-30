@@ -18,7 +18,7 @@ function preRellenarFormulario() {
   telefonoInput.value = "1134567890";
 }
 
-// Hacemos globales para que los use el otro archivo
+// Hacemos accesibles estos elementos desde otro archivo
 window.TurneroDOM = {
   form,
   nombreInput,

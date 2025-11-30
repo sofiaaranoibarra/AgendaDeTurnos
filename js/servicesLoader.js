@@ -9,7 +9,6 @@ const ServicesLoader = (function () {
 
       const data = await resp.json();
 
-      // Cargar categorías
       data.forEach(item => {
         const opt = document.createElement('option');
         opt.value = item.categoria;
@@ -17,7 +16,6 @@ const ServicesLoader = (function () {
         categoriaSelect.appendChild(opt);
       });
 
-      // Evento para cargar servicios según categoría
       categoriaSelect.addEventListener('change', (e) => {
         const cat = e.target.value;
         servicioSelect.innerHTML = '<option value="">-- Selecciona Ecografia --</option>';
