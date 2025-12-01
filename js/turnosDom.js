@@ -7,6 +7,7 @@ const categoriaSelect = document.getElementById('categoria');
 const servicioSelect = document.getElementById('servicio');
 const fechaInput = document.getElementById('fecha');
 const horaSelect = document.getElementById('hora');
+const oossInput = document.getElementById('ooss');
 const listaTurnos = document.getElementById('listaTurnos');
 const btnLimpiar = document.getElementById('btnLimpiar');
 const btnReservar = document.getElementById('btnReservar');
@@ -16,6 +17,7 @@ function preRellenarFormulario() {
   nombreInput.value = "Juan Pérez";
   emailInput.value = "juan.perez@example.com";
   telefonoInput.value = "1134567890";
+  oossInput.value = "OSDE";
 }
 
 // Hacemos accesibles estos elementos desde otro archivo
@@ -28,8 +30,10 @@ window.TurneroDOM = {
   servicioSelect,
   fechaInput,
   horaSelect,
+  oossInput,
   listaTurnos,
   btnLimpiar,
   btnReservar,
   preRellenarFormulario
 };
+

@@ -14,7 +14,6 @@
 
   <!-- Vanilla Calendar FREE -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-calendar@2.7.0/build/vanilla-calendar.min.css" />
-
   <script defer src="https://cdn.jsdelivr.net/npm/vanilla-calendar@2.7.0/build/vanilla-calendar.min.js"></script>
 
   <!-- JS -->
@@ -22,7 +21,6 @@
   <script defer src="./js/turnosUtils.js"></script>
   <script defer src="./js/turnosDom.js"></script>
   <script defer src="./js/turnosManager.js"></script>
-
 </head>
 
 <body>
@@ -54,6 +52,23 @@
           <small class="error" data-for="telefono"></small>
         </div>
 
+        <!-- NUEVO CAMPO OOSS -->
+        <div class="field">
+          <label for="ooss">Obra Social (OOSS)</label>
+          <select id="ooss" name="ooss" required>
+            <option value="">-- Selecciona Obra Social --</option>
+            <option value="OSDE">OSDE</option>
+            <option value="Swiss Medical">Swiss Medical</option>
+            <option value="Galeno">Galeno</option>
+            <option value="Medife">Medife</option>
+            <option value="Sancor Salud">Sancor Salud</option>
+            <option value="IOMA">IOMA</option>
+            <option value="Particular">Particular</option>
+          </select>
+          <small class="error" data-for="ooss"></small>
+        </div>
+
+
         <div class="field">
           <label for="categoria">Categoría</label>
           <select id="categoria" required>
@@ -62,9 +77,9 @@
         </div>
 
         <div class="field">
-          <label for="servicio">Ecografia</label>
+          <label for="servicio">Ecografía</label>
           <select id="servicio" required>
-            <option value="">-- Selecciona Ecografia --</option>
+            <option value="">-- Selecciona Ecografía --</option>
           </select>
         </div>
 
@@ -93,8 +108,7 @@
 
     <section class="panel panel-right">
       <h2>Turnos Agendados</h2>
-      <div id="listaTurnos">
-      </div>
+      <div id="listaTurnos"></div>
     </section>
   </main>
 
